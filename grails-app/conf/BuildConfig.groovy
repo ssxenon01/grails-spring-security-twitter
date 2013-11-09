@@ -3,10 +3,14 @@ grails.project.test.class.dir = "target/test-classes"
 grails.project.test.reports.dir = "target/test-reports"
 //grails.project.war.file = "target/${appName}-${appVersion}.war"
 
-String springSecurityVer = "3.0.7.RELEASE"
+String springSecurityVer = "3.1.4.RELEASE"
 grails.release.scm.enabled = false
-grails.project.repos.default = "grailsCentral"
 
+grails.project.repos.internalRepo.url = "http://subversion.assembla.com/svn/panteraproject/repos"
+grails.plugin.repos.discovery.internalRepo = "http://subversion.assembla.com/svn/panteraproject/repos"
+grails.plugin.repos.distribution.internalRepo = "http://subversion.assembla.com/svn/panteraproject/repos"
+
+grails.project.repos.default = "internalRepo"
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
     inherits("global") {
@@ -52,10 +56,10 @@ grails.project.dependency.resolution = {
     plugins {
         provided ':webxml:1.4.1'
 
-        build(':release:2.2.0', ':rest-client-builder:1.0.3') {
+        build ':release:3.0.1', ':rest-client-builder:1.0.3', {
             export = false
         }
 
-        runtime(':spring-security-core:1.2.7.2')
+        compile ':spring-security-core:2.0-RC2'
     }
 }
